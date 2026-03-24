@@ -13,19 +13,19 @@ export default function Module5Portfolio() {
   const [isDark, setIsDark] = useState(false)
   const [formValues, setFormValues] = useState({ user_name: '', user_email: '', message: '' })
 
-  // Skeleton loading
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000)
     return () => clearTimeout(timer)
   }, [])
 
-  // Load dark mode from localStorage
+
   useEffect(() => {
     const saved = localStorage.getItem('darkMode')
     if (saved === 'true') setIsDark(true)
   }, [])
 
-  // Apply dark mode class and save preference
+
   useEffect(() => {
     const root = window.document.documentElement
     if (isDark) root.classList.add('dark')
@@ -33,7 +33,7 @@ export default function Module5Portfolio() {
     localStorage.setItem('darkMode', isDark.toString())
   }, [isDark])
 
-  // Animate project cards when in viewport
+
   useEffect(() => {
     const cards = document.querySelectorAll('.project-card')
     const observer = new IntersectionObserver(
@@ -113,12 +113,12 @@ export default function Module5Portfolio() {
 
   return (
     <div className="min-h-screen bg-[#e6f0fa] dark:bg-gray-900 scroll-smooth">
-      {/* Header */}
+ 
       <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-20">
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
           <div className="text-xl font-bold text-gray-900 dark:text-white">Portfolio</div>
 
-          {/* Desktop Menu */}
+    
           <div className="hidden md:flex space-x-6 lg:space-x-8 items-center">
             <a
               href="#hero"
@@ -145,7 +145,7 @@ export default function Module5Portfolio() {
               Contact
             </a>
 
-            {/* Dark Mode Toggle */}
+           
             <button
               onClick={() => setIsDark(prev => !prev)}
               className="ml-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
@@ -154,7 +154,7 @@ export default function Module5Portfolio() {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+        
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsDark(prev => !prev)}
@@ -188,7 +188,6 @@ export default function Module5Portfolio() {
           </div>
         </nav>
 
-        {/* Mobile Menu Links */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg">
             <a
@@ -219,7 +218,6 @@ export default function Module5Portfolio() {
         )}
       </header>
 
-      {/* Hero */}
       <section
         id="hero"
         className="bg-[url('/background.jpg')] bg-cover bg-center text-white py-20 text-center relative"
@@ -257,7 +255,6 @@ export default function Module5Portfolio() {
         `}</style>
       </section>
 
-      {/* Projects */}
       <section id="projects" className="py-20 bg-blue-50 dark:bg-slate-900">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">
@@ -279,7 +276,7 @@ export default function Module5Portfolio() {
         </div>
       </section>
 
-      {/* About */}
+      
       <section id="about" className="py-20 bg-blue-200 dark:bg-slate-800">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-12 text-slate-900 dark:text-white">About Me</h2>
@@ -311,7 +308,7 @@ export default function Module5Portfolio() {
         </div>
       </section>
 
-      {/* Contact */}
+      
       <section id="contact" className="py-20 bg-blue-50 dark:bg-slate-900">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">Contact Me</h2>
@@ -369,7 +366,7 @@ export default function Module5Portfolio() {
         </div>
       </section>
 
-      {/* Footer */}
+      
       <footer className="bg-gray-900 text-white py-6 text-center">
         <p>© 2026 Raquelle Cadena</p>
         <div className="mt-4 flex justify-center space-x-6">
@@ -401,7 +398,6 @@ export default function Module5Portfolio() {
   )
 }
 
-// Project card with hover and fade-in animation
 function ProjectCard({
   title,
   description,
@@ -439,7 +435,7 @@ function ProjectCard({
           View Project →
         </a>
       </div>
-      {/* Shimmer effect */}
+      
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
     </div>
   )
