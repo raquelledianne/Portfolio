@@ -18,6 +18,8 @@
 *.pem
 
 # debug
+# Exclude old project backup
+fes-copilot-course-main/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

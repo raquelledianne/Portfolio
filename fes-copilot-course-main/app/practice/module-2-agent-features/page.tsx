@@ -159,13 +159,18 @@ function BrokenCalculator() {
 
   // Bug: This function has issues with type conversion and error handling
   const calculate = () => {
-    const sum = num1 + num2 // Bug: String concatenation instead of addition
+    const sum = Number(num1) + Number(num2) // Fixed: Convert to numbers and add
     setResult(sum)
   }
 
   // Bug: Missing divide by zero check
   const divide = () => {
-    setResult(num1 / num2)
+    const divisor = Number(num2)
+    if (divisor === 0) {
+      alert('Cannot divide by zero!')
+      return
+    }
+    setResult(Number(num1) / divisor)
   }
 
   return (
