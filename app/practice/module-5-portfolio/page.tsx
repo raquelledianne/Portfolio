@@ -107,7 +107,7 @@ export default function Module5Portfolio() {
       title: 'Summarist',
       img: '/summarist.png',
       desc: 'A knowledge‑boosting web app that lets users quickly understand the core ideas of books, articles, and content without reading the full text.',
-      link: '#',
+      link: 'https://summarist-xi.vercel.app/', 
     },
   ]
 
