@@ -86,6 +86,12 @@ export default function Module5Portfolio() {
 
   const projects = [
     {
+      title: 'Skinstric A.I.',
+      img: '/Skinstric.png',
+      desc: 'An interactive web application that simulates an AI-driven skincare platform, delivering a personalized user journey through dynamic UI transitions.',
+      link: 'https://skinstric-alpha.vercel.app/',
+    },
+    {
       title: 'Ultraverse',
       img: '/ultraverse.png',
       desc: 'A blockchain-powered marketplace where users can create, sell, and collect unique digital assets (NFTs).',
@@ -97,18 +103,20 @@ export default function Module5Portfolio() {
       desc: 'Responsive video platform UI built to replicate core YouTube features.',
       link: 'https://youtube-clone-rose-sigma.vercel.app/',
     },
-    {
-      title: 'Netflix Clone',
-      img: '/netflix-clone.png',
-      desc: 'Streaming-style UI with modern design patterns and responsive layouts.',
-      link: 'https://netflix-clone-nu-lovat.vercel.app',
-    },
+    
     {
       title: 'Summarist',
       img: '/summarist.png',
       desc: 'A knowledge‑boosting web app that lets users quickly understand the core ideas of books, articles, and content without reading the full text.',
       link: 'https://summarist-xi.vercel.app/', 
     },
+
+    {
+      title: 'Netflix Clone',
+      img: '/netflix-clone.png',
+      desc: 'Streaming-style UI with modern design patterns and responsive layouts.',
+      link: 'https://netflix-clone-nu-lovat.vercel.app',
+    }
   ]
 
   return (
