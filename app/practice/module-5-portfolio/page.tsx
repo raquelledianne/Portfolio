@@ -12,6 +12,15 @@ export default function Module5Portfolio() {
   const [visibleCards, setVisibleCards] = useState<number[]>([])
   const [isDark, setIsDark] = useState(false)
   const [formValues, setFormValues] = useState({ user_name: '', user_email: '', message: '' })
+  const [showSwipeHint, setShowSwipeHint] = useState(true)
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowSwipeHint(false)
+  }, 2500)
+
+  return () => clearTimeout(timer)
+}, [])
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000)
@@ -187,68 +196,108 @@ export default function Module5Portfolio() {
         </div>
       </section>
 
-      {/* PROJECTS CAROUSEL (ONLY CHANGE) */}
+      
       <section id="projects" className="py-20 bg-blue-50 dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">
-            Projects
-          </h2>
+  <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2 className="text-3xl font-bold text-center mb-10 text-slate-900 dark:text-white">
+      Projects
+    </h2>
 
-          <div className="relative flex items-center">
+    <div className="relative">
+      {showSwipeHint && (
+  <div className="pointer-events-none absolute inset-0 flex items-center justify-center z-30">
+    <div className="bg-black/40 text-white px-4 py-2 rounded-full text-sm sm:text-base backdrop-blur-md animate-fade-in-out">
+      ← swipe →
+    </div>
+  </div>
+)}
+  
+  <button
+  onClick={() =>
+    document.getElementById('project-scroll')?.scrollBy({ left: -300, behavior: 'smooth' })
+  }
+  className="
+    hidden sm:flex
+    absolute left-[-18px] md:left-[-28px] lg:left-[-36px]
+    top-1/2 -translate-y-1/2 z-20
 
-            <button
-              onClick={() =>
-                document.getElementById('project-scroll')?.scrollBy({ left: -380, behavior: 'smooth' })
-              }
-              className="hidden md:flex items-center justify-center
-                         w-12 h-12 rounded-full
-                         bg-white/80 dark:bg-gray-800/80 backdrop-blur-md
-                         shadow-lg border border-white/40 dark:border-gray-700
-                         text-gray-700 dark:text-white
-                         hover:scale-110 transition flex-shrink-0"
-            >
-              <span className="text-2xl leading-none">‹</span>
-            </button>
+    w-10 h-10 md:w-12 md:h-12
+    rounded-full
 
-            <div
-              id="project-scroll"
-              className="flex gap-8 overflow-x-auto px-6 mx-4 snap-x snap-mandatory scroll-smooth scrollbar-hide"
-            >
-              {projects.map((p, i) => (
-                <div
-                  key={i}
-                  className="snap-start flex-shrink-0 w-[260px] sm:w-[280px] md:w-[240px] lg:w-[23%]"
-                >
-                  <ProjectCard
-                    title={p.title}
-                    description={p.desc}
-                    img={p.img}
-                    link={p.link}
-                    github={p.github}
-                    visible={visibleCards.includes(i)}
-                    index={i}
-                  />
-                </div>
-              ))}
-            </div>
+    bg-white/90 dark:bg-gray-800/90 backdrop-blur-md
+    shadow-md border border-gray-200 dark:border-gray-700
 
-            <button
-              onClick={() =>
-                document.getElementById('project-scroll')?.scrollBy({ left: 380, behavior: 'smooth' })
-              }
-              className="hidden md:flex items-center justify-center
-                         w-12 h-12 rounded-full
-                         bg-white/80 dark:bg-gray-800/80 backdrop-blur-md
-                         shadow-lg border border-white/40 dark:border-gray-700
-                         text-gray-700 dark:text-white
-                         hover:scale-110 transition flex-shrink-0"
-            >
-              <span className="text-2xl leading-none">›</span>
-            </button>
+    items-center justify-center
+    hover:scale-110 transition
+  "
+>
+  ‹
+</button>
 
-          </div>
-        </div>
-      </section>
+ 
+  <div
+    id="project-scroll"
+    className="
+      flex
+      overflow-x-auto
+      scroll-smooth
+      snap-x snap-mandatory
+      scrollbar-hide
+
+      px-4 sm:px-6 lg:px-8
+
+      gap-4 sm:gap-5 lg:gap-6
+    "
+  >
+    {projects.map((p, i) => (
+      <div
+        key={i}
+        className="
+          snap-start
+          flex-shrink-0
+
+          /* 👇 THIS is the key fix */
+          w-full sm:w-1/2 md:w-1/3 lg:w-1/4
+        "
+      >
+        <ProjectCard
+          title={p.title}
+          description={p.desc}
+          img={p.img}
+          link={p.link}
+          github={p.github}
+          visible={visibleCards.includes(i)}
+          index={i}
+        />
+      </div>
+    ))}
+  </div>
+
+  
+  <button
+  onClick={() =>
+    document.getElementById('project-scroll')?.scrollBy({ left: 300, behavior: 'smooth' })
+  }
+  className="
+    hidden sm:flex
+    absolute right-[-18px] md:right-[-28px] lg:right-[-36px]
+    top-1/2 -translate-y-1/2 z-20
+
+    w-10 h-10 md:w-12 md:h-12
+    rounded-full
+
+    bg-white/90 dark:bg-gray-800/90 backdrop-blur-md
+    shadow-md border border-gray-200 dark:border-gray-700
+
+    items-center justify-center
+    hover:scale-110 transition
+  "
+>
+  ›
+</button>
+</div>
+  </div>
+</section>
 
       <section id="about" className="py-20 bg-blue-200 dark:bg-slate-800">
         <div className="max-w-6xl mx-auto px-4 text-center">
@@ -422,14 +471,15 @@ function ProjectCard({
 }) {
   return (
     <div
-      data-index={index}
-      className={`project-card group relative overflow-hidden bg-gray-100 dark:bg-gray-700 rounded-lg shadow transform transition duration-700 
-        ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} 
-        hover:-translate-y-2 hover:scale-105 hover:shadow-2xl`}
-    >
-      <div className="h-40 bg-gray-300 dark:bg-gray-600 relative">
-        <Image src={img} alt={title} fill className="object-cover" />
-      </div>
+  data-index={index}
+  className={`project-card group relative overflow-hidden bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md
+    transition duration-500
+    ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
+    hover:-translate-y-2 hover:scale-[1.02]`}
+>
+      <div className="h-36 relative">
+  <Image src={img} alt={title} fill className="object-cover" />
+</div>
 
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{title}</h3>
