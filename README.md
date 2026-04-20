@@ -1,4 +1,4 @@
-# 🚀 Portfolio OS
+# 🚀 Portfolio 
 
 ### A modern frontend portfolio showcasing production-grade UI engineering
 
