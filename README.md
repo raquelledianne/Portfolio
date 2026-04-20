@@ -8,7 +8,7 @@
 
 ## ⚡ Built for Performance. Designed for Experience.
 
-Portfolio OS is a frontend developer portfolio built to simulate a real SaaS product experience.  
+A frontend developer portfolio built to simulate a real SaaS product experience.  
 It focuses on clean UI, smooth interactions, and scalable React architecture.
 
 ---
