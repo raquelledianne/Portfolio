@@ -104,13 +104,7 @@ useEffect(() => {
       link: 'https://raquelle-virtual-internship-git-d84859-raquellediannes-projects.vercel.app/',
       github: 'https://github.com/raquelledianne/raquelle-internship'
     },
-    {
-      title: 'YouTube Clone',
-      img: '/youtube-clone.png',
-      desc: 'Responsive video platform UI built to replicate core YouTube features.',
-      link: 'https://youtube-clone-rose-sigma.vercel.app/',
-      github: 'https://github.com/raquelledianne/Youtube-Clone'
-    },
+    
     {
       title: 'Summarist',
       img: '/summarist.png',
@@ -118,6 +112,23 @@ useEffect(() => {
       link: 'https://summarist-xi.vercel.app/',
       github: 'https://github.com/raquelledianne/summarist'
     },
+
+    {
+      title: 'Hebrews Coffee',
+      img: '/hebrews.png',
+      desc: 'A modern, mobile-first café web experience built with React, featuring warm UI design, smooth micro-interactions, and an immersive, atmospheric ordering flow',
+      link: 'https://hebrews-coffee.vercel.app/',
+      github: 'https://github.com/raquelledianne/Hebrews-Coffee'
+    },
+
+    {
+      title: 'YouTube Clone',
+      img: '/youtube-clone.png',
+      desc: 'Responsive video platform UI built to replicate core YouTube features.',
+      link: 'https://youtube-clone-rose-sigma.vercel.app/',
+      github: 'https://github.com/raquelledianne/Youtube-Clone'
+    },
+
     {
       title: 'Netflix Clone',
       img: '/netflix-clone.png',
